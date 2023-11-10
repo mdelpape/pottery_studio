@@ -4,26 +4,62 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import Rotator from './Rotator';
 import Bowl from './Bowl';
+import VaseWall from './VaseWall';
+import Doughnut from './Doughnut';
 
 const Scene = () => {
   return (
-    <Canvas className="w-full h-full bg-black">
+    <Canvas className="w-full h-full bg-slate-500">
       <ambientLight
-        intensity={0.05}
+        intensity={.5}
       />
       <pointLight position={[10, 10, 10]}
-        intensity={500}
+        intensity={1000}
+        color="white"
       />
-      <pointLight position={[0, 1, 0]} />
-      {/* <Rotator>
-        <mesh position={[0, 0, 0]}>
-          <boxGeometry args={[1, 1, 1]} />
-          <meshStandardMaterial color="hotpink" />
-        </mesh>
-      </Rotator> */}
       <Rotator >
         <Bowl />
       </Rotator>
+      <Rotator >
+        <Doughnut />
+      </Rotator>
+      <Rotator >
+        <Doughnut />
+      </Rotator>
+      <Rotator >
+        <Doughnut />
+      </Rotator>
+      <Rotator >
+        <Bowl />
+      </Rotator>
+      <Rotator >
+        <Bowl />
+      </Rotator>
+      <Rotator >
+        <Bowl />
+      </Rotator>
+      <Rotator >
+        <Bowl />
+      </Rotator>
+      <Rotator >
+        <Doughnut />
+      </Rotator>
+      <Rotator >
+        <Doughnut />
+      </Rotator>
+      <Rotator >
+        <Doughnut />
+      </Rotator>
+      <Rotator >
+        <Bowl />
+      </Rotator>
+      <Rotator >
+        <Bowl />
+      </Rotator>
+      <Rotator >
+        <Bowl />
+      </Rotator>
+      {/* <VaseWall position={[-5, -3, -5]} rotation={[0, Math.PI / 2, 0]} /> */}
       <OrbitControls />
     </Canvas>
   );

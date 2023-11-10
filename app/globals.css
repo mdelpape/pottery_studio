@@ -16,4 +16,6 @@
   }
 }
 
-
+body {
+  cursor: url('../public/assets/brush.cur'), default
+}

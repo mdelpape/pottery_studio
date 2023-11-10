@@ -4,16 +4,26 @@ export default function Header() {
 
   return (
     <div className={
-      "bg-gray-100 text-gray-900 flex justify-center items-center h-12 gap-10"
+      " text-gray-900 flex justify-center items-center h-12 gap-10"
     }>
       <Link href="/">
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          Go to Home
+        <button className=" hover:bg-blue-700 font-bold py-2 px-4 rounded bg-gray-300 text-black">
+          Home
         </button>
       </Link>
       <Link href="/test_route">
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          Go to Test Route
+        <button className=" hover:bg-blue-700 font-bold py-2 px-4 rounded bg-gray-300 text-black">
+          Pottery Classes
+        </button>
+      </Link>
+      <Link href="/test_route">
+        <button className=" hover:bg-blue-700 font-bold py-2 px-4 rounded bg-gray-300 text-black">
+          Open Studio
+        </button>
+      </Link>
+      <Link href="/test_route">
+        <button className=" hover:bg-blue-700 font-bold py-2 px-4 rounded bg-gray-300 text-black">
+          More
         </button>
       </Link>
     </div>
