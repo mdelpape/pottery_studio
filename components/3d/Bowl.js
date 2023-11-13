@@ -14,19 +14,24 @@ export default function Bowl() {
   const material = useMemo(() => new MeshPhongMaterial({
     color: 'white',
     metalness: 0.5,
-    shininess: 100,
+    shininess: 2000,
   }), []);
 
   // Apply the material to the cloned model
   useMemo(() => model.traverse((child) => {
     if (child.isMesh) {
       child.material = material;
+      child.castShadow = true;
     }
   }), [model, material]);
 
   return (
-    <group>
-      <primitive object={model} scale={0.2} rotation={[0, 0, 0.3]} />
+    <group
+    castShadow
+    >
+      <primitive object={model} scale={0.2} rotation={[0, 0, 0.3]}
+        castShadow
+      />
     </group>
   );
 }

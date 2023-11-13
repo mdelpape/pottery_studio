@@ -12,9 +12,11 @@ export default function Home() {
         <Scene />
       </div>
       {/* Main content */}
-      <main className="z-10 relative flex flex-col items-center justify-center py-2 min-h-screen">
-        <h1 className="text-6xl font-bold">Potter's Paradise</h1>
-        <p className="text-2xl">This is the home page.</p>
+      <main className="z-10 relative flex flex-col items-center py-2 h-[200vh]">
+        <div className="relative justify-center text-center top-[50vh]">
+          <h1 className="text-6xl font-bold" style={{ color: '#F1EDEE' }}>Potter's Paradise</h1>
+          <p className="text-2xl" style={{ color: '#F1EDEE' }}>This is the home page.</p>
+        </div>
       </main>
     </div >
   );

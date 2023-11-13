@@ -21,9 +21,9 @@ const Rotator = ({ children }) => {
   useFrame(() => {
     if (groupRef.current) {
       // Rotate in random direction
-      groupRef.current.rotation.y += 0.001;
-      if (groupRef.current.position.y > -10) {
-        groupRef.current.position.y -= Math.random() * 0.01;
+      groupRef.current.rotation.y += 0.005;
+      if (groupRef.current.position.y > -17) {
+        groupRef.current.position.y -= 0.005
       } else {
         groupRef.current.position.y = 10;
       }

@@ -12,14 +12,15 @@ export default function Doughnut() {
 
   // Create the material
   const material = useMemo(() => new MeshPhongMaterial({
-    color: 'white',
-    shininess: 1000,
+    color: '#8AA29E',
+    shininess: 2000,
   }), []);
 
   // Apply the material to the cloned model
   useMemo(() => model.traverse((child) => {
     if (child.isMesh) {
       child.material = material;
+      child.castShadow = true;
     }
   }), [model, material]);
 
