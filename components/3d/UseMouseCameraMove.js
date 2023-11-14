@@ -33,6 +33,10 @@ const useMouseCameraMove = () => {
       camera.lookAt(0, 0, 0);
     };
 
+    //if the user is on a phone dont add mouse move event listener
+    if (typeof window.orientation !== 'undefined') {
+      return;
+    }
     window.addEventListener('mousemove', handleMouseMove);
 
     return () => {
