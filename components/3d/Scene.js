@@ -90,7 +90,6 @@ const Scene = () => {
         <Rotator >
           <Vase5 />
         </Rotator>
-
       </group>
       <OrbitControls />
       <Plane />

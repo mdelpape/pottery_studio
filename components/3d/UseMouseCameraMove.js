@@ -9,8 +9,8 @@ const useMouseCameraMove = () => {
     // Translate mouseX and mouseY to 3D coordinates
     // This is a placeholder, adjust according to your scene setup
     return {
-      x: mouseX * .2, // scaleFactor depends on your scene's scale
-      y: mouseY * .2,
+      x: mouseX * .3, // scaleFactor depends on your scene's scale
+      y: mouseY * .3,
       z: camera.position.z // Keep the Z coordinate constant or adjust as needed
     };
   };
