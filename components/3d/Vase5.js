@@ -29,7 +29,7 @@ export default function Vase5() {
     <group
       castShadow
     >
-      <primitive object={model} scale={0.1} rotation={[0, 0, 0.3]}
+      <primitive object={model} scale={0.08} rotation={[0, 0, 0.3]}
         castShadow
       />
     </group>

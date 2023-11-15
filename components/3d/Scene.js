@@ -1,7 +1,7 @@
 // Scene.js
 import React from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
+import { OrbitControls, Text, shaderMaterial, Text3D, useFont } from '@react-three/drei';
 import Rotator from './Rotator';
 import Bowl from './Bowl';
 import VaseWall from './VaseWall';
@@ -14,6 +14,9 @@ import Vase2 from './Vase2';
 import Vase3 from './Vase3';
 import Vase4 from './Vase4';
 import Vase5 from './Vase5';
+import * as THREE from 'three';
+
+import Title from './Title';
 
 
 const Scene = () => {
@@ -51,15 +54,6 @@ const Scene = () => {
         shadow-radius={10}
       />
       <group ref={groupRef}>
-        {/* <Rotator >
-          <Bowl />
-        </Rotator> */}
-        {/* <Rotator >
-          <Doughnut />
-        </Rotator>
-        <Rotator >
-          <Doughnut />
-        </Rotator> */}
         <Rotator >
           <Vase1 />
         </Rotator>
@@ -90,6 +84,38 @@ const Scene = () => {
         <Rotator >
           <Vase5 />
         </Rotator>
+        <Rotator >
+          <Vase1 />
+        </Rotator>
+        <Rotator >
+          <Vase2 />
+        </Rotator>
+        <Rotator >
+          <Vase1 />
+        </Rotator>
+        <Rotator >
+          <Vase2 />
+        </Rotator>
+        <Rotator >
+          <Vase5 />
+        </Rotator>
+        <Rotator >
+          <Vase1 />
+        </Rotator>
+        <Rotator >
+          <Vase2 />
+        </Rotator>
+        <Rotator >
+          <Vase1 />
+        </Rotator>
+        <Rotator >
+          <Vase2 />
+        </Rotator>
+        <Rotator >
+          <Vase5 />
+        </Rotator>
+
+        <Title />
       </group>
       <OrbitControls />
       <Plane />

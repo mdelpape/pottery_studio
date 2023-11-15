@@ -14,8 +14,8 @@ export default function Home() {
       {/* Main content */}
       <main className="z-10 relative flex flex-col items-center py-2 h-[200vh] align-middle">
         <div className="relative justify-center text-center top-[40vh] align-middle">
-          <h1 className="text-6xl font-bold text-center" style={{ color: '#F1EDEE' }}>Potter's Paradise</h1>
-          <p className="text-2xl" style={{ color: '#F1EDEE' }}>This is the home page.</p>
+          {/* <h1 className="text-6xl font-bold text-center" style={{ color: '#F1EDEE' }}>Potter's Paradise</h1>
+          <p className="text-2xl" style={{ color: '#F1EDEE' }}>This is the home page.</p> */}
         </div>
       </main>
     </div >
