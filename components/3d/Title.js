@@ -11,7 +11,7 @@ export default function Title() {
 
     <>
       <Text3D font={Font} position={
-        [-3, 0, -6]
+        [-3.5, 0, -6]
       } castShadow
         scale={1.5}
         receiveShadow
@@ -20,7 +20,7 @@ export default function Title() {
         <meshStandardMaterial attach="material" color="#FFECCC" />
       </Text3D>
       <Text3D font={Font} position={
-        [-3.35, -2, -6]
+        [-3.9, -2, -6]
       } castShadow
         scale={1.5}
         receiveShadow
