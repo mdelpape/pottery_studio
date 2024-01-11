@@ -23,7 +23,7 @@ const FlowFieldAnimation = () => {
 
     const updateCanvasDimensions = () => {
       canvas.width = window.innerWidth + gridSize
-      canvas.height = window.innerHeight+ gridSize
+      canvas.height = window.innerHeight + gridSize
       columns.current = Math.floor(canvas.width / gridSize)
       rows.current = Math.floor(canvas.height / gridSize);
     };
