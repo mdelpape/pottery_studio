@@ -19,6 +19,7 @@ const FlowFieldAnimation = () => {
   useEffect(() => {
     const canvas = canvasRef.current;
     ctx.current = canvas.getContext('2d');
+    let animationFrameId;
 
     const updateCanvasDimensions = () => {
       canvas.width = window.innerWidth;
@@ -118,11 +119,12 @@ const FlowFieldAnimation = () => {
         vector.angle += (Math.random() - 0.5) * angleChangeRate;
       });
 
-      requestAnimationFrame(animate);
+      animationFrameId = requestAnimationFrame(animate);
     };
 
     animate();
     return () => {
+      cancelAnimationFrame(animationFrameId);
       window.removeEventListener('resize', updateCanvasDimensions);
     };
   }, []);
