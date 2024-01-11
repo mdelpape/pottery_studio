@@ -1,21 +1,26 @@
+'use-client'
 import React, { useMemo } from 'react';
 import { useLoader } from '@react-three/fiber';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
-import { MeshPhongMaterial } from 'three';
+import { MeshPhongMaterial, MeshStandardMaterial } from 'three';
+import { DissolveMaterial } from './DissolveMaterial';
 
 export default function Vase1() {
   // Load the OBJ model
-  const originalModel = useLoader(OBJLoader, '/assets/vase11.obj');
-
-  // Clone the model for each instance of Bowl
-  const model = useMemo(() => originalModel.clone(), [originalModel]);
+  const model = useLoader(OBJLoader, '/assets/vase11.obj');
 
   // Create the material
-  const material = useMemo(() => new MeshPhongMaterial({
+  const baseMaterial = useMemo(() => new MeshStandardMaterial({
     color: '#8AA29E',
-    metalness: 0.5,
-    shininess: 2000,
   }), []);
+
+  // Create a standard material (or use your custom material)
+  const material = useMemo(() => new MeshStandardMaterial({ color: 'pink' }), []);
+
+  const dissolveMaterial = useMemo(() => new DissolveMaterial({
+    baseMaterial: material,
+    // ...you might want to add additional properties depending on how DissolveMaterial is set up
+  }), [material]);
 
   // Apply the material to the cloned model
   useMemo(() => model.traverse((child) => {
@@ -25,6 +30,8 @@ export default function Vase1() {
     }
   }), [model, material]);
 
+
+
   return (
     <group
       castShadow
@@ -32,6 +39,7 @@ export default function Vase1() {
       <primitive object={model} scale={0.08} rotation={[0, 0, 0.3]}
         castShadow
       />
+      {/* <DissolveMaterial baseMaterial={baseMaterial} /> */}
     </group>
   );
 }

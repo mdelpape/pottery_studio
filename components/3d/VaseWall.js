@@ -8,7 +8,6 @@ import {
 } from 'three';
 
 export default function VaseWall({ position = [0, 0, 0], rotation = [0, 0, 0] }) {
-  console.log('VaseWall - Position:', position);
 
   // The loaded OBJ model is expected to be a Promise
   const model = useLoader(OBJLoader, '/assets/vase_designs_obj.obj');

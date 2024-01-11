@@ -13,7 +13,6 @@ export default function Vase3() {
   // Create the material
   const material = useMemo(() => new MeshPhongMaterial({
     color: '#8AA29E',
-    metalness: 0.5,
     shininess: 2000,
   }), []);
 

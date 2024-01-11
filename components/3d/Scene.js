@@ -15,9 +15,11 @@ import Vase3 from './Vase3';
 import Vase4 from './Vase4';
 import Vase5 from './Vase5';
 import * as THREE from 'three';
+import { DissolveMaterial } from './DissolveMaterial';
 
 import Title from './Title';
 
+const boxMaterial = new THREE.MeshStandardMaterial({ color: "white" });
 
 const Scene = () => {
   const groupRef = React.useRef();
@@ -37,9 +39,11 @@ const Scene = () => {
   }, []);
 
   return (
-    <Canvas className="w-full h-full bg-red-950"
+    <Canvas className="w-full h-full z-50"
       shadows
+
     >
+      <Title />
       <MouseCameraMoveWrapper />
       <ambientLight
         intensity={.5}
@@ -54,68 +58,22 @@ const Scene = () => {
         shadow-radius={10}
       />
       <group ref={groupRef}>
-        <Rotator >
-          <Vase1 />
-        </Rotator>
-        <Rotator >
-          <Vase2 />
-        </Rotator>
-        <Rotator >
-          <Vase1 />
-        </Rotator>
-        <Rotator >
-          <Vase2 />
-        </Rotator>
-        <Rotator >
-          <Vase5 />
-        </Rotator>
-        <Rotator >
-          <Vase1 />
-        </Rotator>
-        <Rotator >
-          <Vase2 />
-        </Rotator>
-        <Rotator >
-          <Vase1 />
-        </Rotator>
-        <Rotator >
-          <Vase2 />
-        </Rotator>
-        <Rotator >
-          <Vase5 />
-        </Rotator>
-        <Rotator >
-          <Vase1 />
-        </Rotator>
-        <Rotator >
-          <Vase2 />
-        </Rotator>
-        <Rotator >
-          <Vase1 />
-        </Rotator>
-        <Rotator >
-          <Vase2 />
-        </Rotator>
-        <Rotator >
-          <Vase5 />
-        </Rotator>
-        <Rotator >
-          <Vase1 />
-        </Rotator>
-        <Rotator >
-          <Vase2 />
-        </Rotator>
-        <Rotator >
-          <Vase1 />
-        </Rotator>
-        <Rotator >
-          <Vase2 />
-        </Rotator>
-        <Rotator >
-          <Vase5 />
-        </Rotator>
-
-        <Title />
+        {Array.from({ length: 20 }).map((_, index) => (
+          <group key={index}>
+            <Rotator>
+              <Vase2 />
+            </Rotator>
+            <Rotator>
+              <Vase3 />
+            </Rotator>
+            <Rotator>
+              <Vase4 />
+            </Rotator>
+            <Rotator>
+              <Vase5 />
+            </Rotator>
+          </group>
+        ))}
       </group>
       <OrbitControls />
       <Plane />

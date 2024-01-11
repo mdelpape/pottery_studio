@@ -13,7 +13,6 @@ export default function Bowl() {
   // Create the material
   const material = useMemo(() => new MeshPhongMaterial({
     color: 'white',
-    metalness: 0.5,
     shininess: 2000,
   }), []);
 
