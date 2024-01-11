@@ -130,11 +130,16 @@ const FlowFieldAnimation = () => {
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      width={800}
-      height={600}
-    ></canvas>
+    <div style={{
+      overflow: 'hidden',
+      height: '100vh',
+    }}>
+      <canvas
+        ref={canvasRef}
+        width={800}
+        height={600}
+      ></canvas>
+    </div>
   );
 };
 
