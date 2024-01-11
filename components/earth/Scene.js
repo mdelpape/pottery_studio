@@ -14,9 +14,9 @@ export default function Scene() {
       style={{
         background: "black",
         width: "200%",
-        height: "100vh",
+        height: "200vh",
         position: "relative",
-        transform: 'translateX(12%)',
+        transform: 'translateX(12%) translateY(-25%)',
       }}
       shadows
     >
