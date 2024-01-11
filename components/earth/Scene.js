@@ -13,8 +13,9 @@ export default function Scene() {
     <Canvas
       style={{
         background: "black",
-        flex: 1,
+        width: "200%",
         position: "absolute",
+        transform: 'translateX(10%)',
       }}
       shadows
     >
