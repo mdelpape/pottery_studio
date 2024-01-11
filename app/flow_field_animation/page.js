@@ -133,6 +133,7 @@ const FlowFieldAnimation = () => {
     <div style={{
       overflow: 'hidden',
       height: '100vh',
+      backgroundColor: '#000',
     }}>
       <canvas
         ref={canvasRef}

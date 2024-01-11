@@ -14,8 +14,8 @@ export default function Camera() {
     setTime((prevTime) => prevTime + rotationSpeed);
 
     // Calculate new camera position based on time
-    const x = Math.sin(time) * 10;
-    const z = Math.cos(time) * 10;
+    const x = Math.sin(time) * 15;
+    const z = Math.cos(time) * 15;
 
     // Set the new camera position
     ref.current.position.set(x, 0, z);
