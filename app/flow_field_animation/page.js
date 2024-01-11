@@ -6,7 +6,7 @@ const FlowFieldAnimation = () => {
   const ctx = useRef(null);
   const numParticles = 4000;
   const particles = useRef([]);
-  const gridSize = 40;
+  const gridSize = 50;
   const flowField = useRef([]);
   const columns = useRef(0);
   const rows = useRef(0);
@@ -22,9 +22,9 @@ const FlowFieldAnimation = () => {
     let animationFrameId;
 
     const updateCanvasDimensions = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      columns.current = Math.floor(canvas.width / gridSize);
+      canvas.width = window.innerWidth + gridSize
+      canvas.height = window.innerHeight+ gridSize
+      columns.current = Math.floor(canvas.width / gridSize)
       rows.current = Math.floor(canvas.height / gridSize);
     };
 
