@@ -10,6 +10,14 @@ export default function Earth() {
   return (
     <main className="flex flex-col items-center justify-between  bg-black z-10" style={bodyStyle}>
       <Scene />
+      <div style={{
+        position: 'relative',
+        bottom: 445,
+        left: 0,
+        width: '100%',
+        height: 200,
+        background: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%)',
+      }} />
     </main>
   )
 }
