@@ -15,12 +15,12 @@ export default function Globe() {
     >
       <sphereGeometry
         attach="geometry"
-        args={[1, 64, 64]}
+        args={[1.5, 50, 50]}
       />
       <meshPhongMaterial
         shininess={200}
         displacementMap={displacementTexture}
-        displacementScale={.5}
+        displacementScale={.3}
         displacementBias={2}
         map={texture}
       />
