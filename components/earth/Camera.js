@@ -18,7 +18,7 @@ export default function Camera() {
     const z = Math.cos(time) * 25;
 
     // Set the new camera position
-    ref.current.position.set(x, 0, z);
+    ref.current.position.set(x, 5, z);
 
     // Set the camera lookAt to the center of the scene (globe)
     ref.current.lookAt(0, 0, 0);

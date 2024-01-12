@@ -6,7 +6,7 @@ export default function Sun() {
   const objectRef = useRef();
 
   const orbitRadius = 30;
-  const speed = .7;
+  const speed = .5;
   const earthPosition = [0, 0, 0];
 
   useFrame(({ clock }) => {

@@ -24,7 +24,7 @@ export default function Scene() {
         shadows
       >
         <Stars
-          radius={10}
+          radius={12}
           depth={5}
           count={50000}
           factor={.8}
@@ -40,14 +40,6 @@ export default function Scene() {
         {/* <OrbitControls /> */}
         <Camera />
       </Canvas>
-      <div style={{
-        bottom: 500,
-        left: 0,
-        zIndex: 100,
-        width: '100%',
-        height: '20%',
-        background: '#000',
-      }} />
     </>
   )
 }

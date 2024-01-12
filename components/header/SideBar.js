@@ -21,6 +21,9 @@ export default function SideBar() {
       <Link href="/earth">
         <ProjectCard Element={'Earth'} />
       </Link>
+      <Link href="/city_head">
+        <ProjectCard Element={'City Head'} />
+      </Link>
     </div>
   );
 }

@@ -12,7 +12,7 @@ export default function Earth() {
       <Scene />
       <div style={{
         position: 'relative',
-        bottom: 445,
+        bottom: 448,
         left: 0,
         width: '100%',
         height: 200,
