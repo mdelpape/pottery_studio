@@ -9,7 +9,7 @@ export default function Camera() {
 
   useFrame(() => {
     // Adjust the rotation speed as needed
-    const rotationSpeed = 0.001;
+    const rotationSpeed = 0.0016;
 
     // Update the time state to rotate the camera
     setTime((prevTime) => prevTime + rotationSpeed);
@@ -39,13 +39,13 @@ export default function Camera() {
       />
       <pointLight
         intensity={500}
-        position={[0, -5, 0]}
+        position={[0, -3, 0]}
         color="white"
         decay={1}
         castShadow
-        shadow-mapSize-width={2048}
         shadow-radius={2}
-
+        shadow-mapSize-width={2500}
+        shadow-mapSize-height={2500}
       />
     </group>
   );
