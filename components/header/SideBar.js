@@ -12,7 +12,7 @@ export default function SideBar() {
 
   return (
     <div className="absolute  m-5 flex flex-col p-5 gap-5 items-center z-50">
-      <Link href="/">
+      <Link href="/raining_pottery">
         <ProjectCard Element={'Raining Pots'} />
       </Link>
       <Link href="/flow_field_animation">

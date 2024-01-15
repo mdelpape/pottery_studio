@@ -58,7 +58,7 @@ const Scene = () => {
         shadow-radius={10}
       />
       <group ref={groupRef}>
-        {Array.from({ length: 50 }).map((_, index) => (
+        {Array.from({ length: 25 }).map((_, index) => (
           <group key={index}>
             <Rotator>
               <Vase2 />
