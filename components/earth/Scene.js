@@ -24,10 +24,10 @@ export default function Scene() {
         shadows
       >
         <Stars
-          radius={12}
+          radius={20}
           depth={5}
           count={50000}
-          factor={.8}
+          factor={1.2}
           saturation={0}
           fade={false}
           speed={0}
@@ -36,7 +36,7 @@ export default function Scene() {
         <OrbitControls />
         <Globe />
         <Moon />
-        <Sun />
+        {/* <Sun /> */}
         {/* <OrbitControls /> */}
         <Camera />
       </Canvas>

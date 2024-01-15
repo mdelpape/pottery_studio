@@ -24,6 +24,7 @@ export default function Moon(props) {
   return (
     <group position={[0, 0, 30]}
       ref={objectRef}
+
     >
       <mesh {...props}
         castShadow

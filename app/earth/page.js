@@ -6,6 +6,7 @@ export default function Earth() {
     overflow: 'hidden',
     margin: 0,  // Remove default body margin
     padding: 0, // Remove default body padding
+    // borderWidth: 10, // Remove default body border
   };
   return (
     <main className="flex flex-col items-center justify-between  bg-black z-10" style={bodyStyle}>

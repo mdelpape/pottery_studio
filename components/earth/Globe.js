@@ -4,14 +4,14 @@ import { TextureLoader } from 'three';
 export default function Globe() {
 
   const displacementTexture = useLoader(TextureLoader, '/assets/World_elevation_map.png');
+
   const texture = useLoader(TextureLoader, '/assets/earth.jpg');
   texture.anisotropy = 16;
-  console.log(texture)
-  console.log(displacementTexture)
+
   return (
     <mesh
       scale={[.5, .5, .5]}
-      recieveShadow
+      receiveShadow
     >
       <sphereGeometry
         attach="geometry"

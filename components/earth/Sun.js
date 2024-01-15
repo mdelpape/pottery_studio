@@ -1,12 +1,13 @@
 import React, { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
+import * as THREE from 'three';
 
 export default function Sun() {
 
   const objectRef = useRef();
 
   const orbitRadius = 30;
-  const speed = .5;
+  const speed = .1;
   const earthPosition = [0, 0, 0];
 
   useFrame(({ clock }) => {
@@ -25,6 +26,12 @@ export default function Sun() {
         color="white"
         decay={1.5}
         castShadow
+        shadow-camera-far={5000}
+        shadow-camera-left={-1000}
+        shadow-camera-right={1000}
+        shadow-camera-top={1000}
+        shadow-camera-bottom={-1000}
+        shadow-mapSize-width={2048}
       />
       <mesh>
         <sphereGeometry
