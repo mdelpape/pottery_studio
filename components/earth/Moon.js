@@ -11,7 +11,7 @@ export default function Moon(props) {
   const objectRef = useRef();
 
   const orbitRadius = 7;
-  const speed = 0;
+  const speed = 1;
   const earthPosition = [0, 0, 0];
 
   useFrame(({ clock }) => {
