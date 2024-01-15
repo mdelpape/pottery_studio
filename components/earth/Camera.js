@@ -27,12 +27,11 @@ export default function Camera() {
   return (
     <group
       ref={groupRef}
-      position={[0, 0, 20]}
     >
       <PerspectiveCamera
         ref={ref}
         makeDefault
-        position={[0, 0, 10]}
+        position={[0, 0, 15]}
         fov={75}
         aspect={window.innerWidth / window.innerHeight}
         near={0.1}
@@ -44,12 +43,9 @@ export default function Camera() {
         color="white"
         decay={1}
         castShadow
-        shadow-camera-far={5000}
-        shadow-camera-left={-1000}
-        shadow-camera-right={1000}
-        shadow-camera-top={1000}
-        shadow-camera-bottom={-1000}
         shadow-mapSize-width={2048}
+        shadow-radius={2}
+
       />
     </group>
   );

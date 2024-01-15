@@ -58,7 +58,7 @@ const Experience = () => {
       <pointLight position={[0, 0, 0]} intensity={200} color={
         new THREE.Color(0x57CCE6)
       }
-        castShadow={true}
+        castShadow
         shadow-mapSize-width={512}
         shadow-mapSize-height={512}
         distance={100}

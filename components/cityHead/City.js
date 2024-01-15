@@ -27,13 +27,15 @@ export function City(props) {
           <mesh geometry={nodes.Plane.geometry} material={
             defaultMaterial
           }
-            castShadow={isMobile ? false : true}
-            receiveShadow={isMobile ? false : true}
+            castShadow={true}
+            receiveShadow
           />
 
 
         </group>
-        <mesh position={[0, 0, -1]}>
+        <mesh position={[0, 0, -1]}
+          receiveShadow
+        >
           <planeGeometry args={[40, 40]} />
           <meshPhongMaterial color={0x750000}
             shininess={1000}
