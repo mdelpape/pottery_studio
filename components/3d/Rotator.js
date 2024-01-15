@@ -9,7 +9,7 @@ const Rotator = ({ children }) => {
 
   useEffect(() => {
     setPosition([
-      Math.random() * 10 - 5,
+      (Math.random() * 25) - 15,
       Math.random() * 44 - 34,
       Math.random() * 7 - 5,
     ]);
@@ -22,7 +22,7 @@ const Rotator = ({ children }) => {
       // Rotate in random direction
       groupRef.current.rotation.y += 0.005;
       if (groupRef.current.position.y > -34) {
-        groupRef.current.position.y -= 0.003
+        groupRef.current.position.y -= 0.02
       } else {
         groupRef.current.position.y = 10;
       }

@@ -7,6 +7,38 @@ import { Head } from "./Head";
 import { City } from "./City";
 
 const Experience = () => {
+  const pointLightRef = useRef();
+
+
+  const updateLightPosition = (e) => {
+    // Calculate the normalized mouse coordinates
+    const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+    const mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+
+    // Adjust the scale factor as needed to control the light's movement
+    const scaleFactorx = 12;
+    const scaleFactory = 6;
+
+    // Apply the scale factor to the mouse coordinates
+    const x = mouseX * scaleFactorx;
+    const y = mouseY * scaleFactory;
+
+    // Set the light positions
+    if (pointLightRef.current) {
+      pointLightRef.current.position.set(x, y, 0);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('mousemove', updateLightPosition);
+    window.addEventListener('touchmove', updateLightPosition);
+    return () => {
+      window.removeEventListener('touchmove', updateLightPosition)
+      window.removeEventListener('mousemove', updateLightPosition)
+    };
+  }
+  );
+
   return (
     <Canvas
       style={{
@@ -14,15 +46,22 @@ const Experience = () => {
         height: "100vh",
       }}
     >
-
-      <pointLight position={[0, 0, 0]} intensity={400} color={
+      <pointLight ref={pointLightRef} position={[0, 0, 0]} intensity={400} color={
         new THREE.Color(0x57CCE6)
       }
         castShadow={true}
         shadow-mapSize-width={512}
         shadow-mapSize-height={512}
         distance={100}
+      />
 
+      <pointLight position={[0, 0, 0]} intensity={200} color={
+        new THREE.Color(0x57CCE6)
+      }
+        castShadow={true}
+        shadow-mapSize-width={512}
+        shadow-mapSize-height={512}
+        distance={100}
       />
       <ambientLight intensity={0.5} />
 
