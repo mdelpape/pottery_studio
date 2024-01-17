@@ -31,8 +31,8 @@ export default function Camera() {
       <PerspectiveCamera
         ref={ref}
         makeDefault
-        position={[0, 0, 15]}
-        fov={75}
+        position={[0, 0, 0]}
+        fov={40}
         aspect={window.innerWidth / window.innerHeight}
         near={0.1}
         far={1000}
