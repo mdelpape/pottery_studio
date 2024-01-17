@@ -22,7 +22,7 @@ const Rotator = ({ children }) => {
       // Rotate in random direction
       groupRef.current.rotation.y += 0.005;
       if (groupRef.current.position.y > -34) {
-        groupRef.current.position.y -= 0.02
+        groupRef.current.position.y -= 0.005
       } else {
         groupRef.current.position.y = 10;
       }

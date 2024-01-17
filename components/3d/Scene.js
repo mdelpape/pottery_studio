@@ -16,6 +16,11 @@ import Vase4 from './Vase4';
 import Vase5 from './Vase5';
 import * as THREE from 'three';
 import { DissolveMaterial } from './DissolveMaterial';
+import {
+  EffectComposer,
+  DepthOfField,
+  Noise
+} from "@react-three/postprocessing";
 
 import Title from './Title';
 
@@ -58,7 +63,7 @@ const Scene = () => {
         shadow-radius={10}
       />
       <group ref={groupRef}>
-        {Array.from({ length: 25 }).map((_, index) => (
+        {Array.from({ length: 50 }).map((_, index) => (
           <group key={index}>
             <Rotator>
               <Vase2 />
@@ -77,6 +82,14 @@ const Scene = () => {
       </group>
       <OrbitControls />
       <Plane />
+      <EffectComposer>
+        <DepthOfField
+          focusDistance={.006}
+          focalLength={0.006}
+          bokehScale={10}
+        />
+        <Noise opacity={0.05} />
+      </EffectComposer>
     </Canvas>
   );
 };

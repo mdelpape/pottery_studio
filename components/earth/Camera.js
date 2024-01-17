@@ -36,6 +36,7 @@ export default function Camera() {
         aspect={window.innerWidth / window.innerHeight}
         near={0.1}
         far={1000}
+        focus={.001}
       />
       <pointLight
         intensity={500}

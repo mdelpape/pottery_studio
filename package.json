@@ -11,6 +11,7 @@
   "dependencies": {
     "@react-three/drei": "^9.93.0",
     "@react-three/fiber": "^8.15.10",
+    "@react-three/postprocessing": "^2.15.12",
     "drei": "^1.0.0",
     "gl-noise": "^1.6.1",
     "next": "^14.0.1",
