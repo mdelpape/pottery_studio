@@ -85,10 +85,11 @@ const Scene = () => {
       <EffectComposer>
         <DepthOfField
           focusDistance={.006}
-          focalLength={0.006}
-          bokehScale={10}
+          focusRange={0.01}
+          focalLength={0.02}
+          bokehScale={20}
         />
-        <Noise opacity={0.05} />
+        <Noise opacity={0.07} />
       </EffectComposer>
     </Canvas>
   );
