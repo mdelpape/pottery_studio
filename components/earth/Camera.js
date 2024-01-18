@@ -9,7 +9,7 @@ export default function Camera() {
 
   useFrame(() => {
     // Adjust the rotation speed as needed
-    const rotationSpeed = 0.0016;
+    const rotationSpeed = 0.0005;
 
     // Update the time state to rotate the camera
     setTime((prevTime) => prevTime + rotationSpeed);
@@ -32,7 +32,7 @@ export default function Camera() {
         ref={ref}
         makeDefault
         position={[0, 0, 0]}
-        fov={40}
+        fov={120}
         aspect={window.innerWidth / window.innerHeight}
         near={0.1}
         far={1000}

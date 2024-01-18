@@ -10,7 +10,7 @@ export default function Moon(props) {
   const normalTexture = useLoader(TextureLoader, '/assets/moon.jpeg');
   const objectRef = useRef();
 
-  const orbitRadius = 7;
+  const orbitRadius = 10;
   const speed = 0.5;
   const earthPosition = [0, 0, 0];
 
@@ -28,7 +28,7 @@ export default function Moon(props) {
     >
       <mesh {...props}
         castShadow
-        scale={[.05, .05, .05]}
+        scale={[.1, .1, .1]}
       >
         <sphereGeometry args={[5, 20, 100]} />
         <meshStandardMaterial

@@ -15,7 +15,7 @@ export default function Globe() {
     >
       <sphereGeometry
         attach="geometry"
-        args={[1.5, 50, 50]}
+        args={[5, 100, 100]}
       />
       <meshPhongMaterial
         shininess={200}
