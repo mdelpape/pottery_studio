@@ -24,9 +24,9 @@ export default function SideBar() {
       <Link href="/city_head">
         <ProjectCard Element={'City Head'} />
       </Link>
-      <Link href="/point_cloud">
+      {/* <Link href="/point_cloud">
         <ProjectCard Element={'Point Cloud'} />
-      </Link>
+      </Link> */}
     </div>
   );
 }

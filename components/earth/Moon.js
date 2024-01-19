@@ -11,7 +11,7 @@ export default function Moon(props) {
   const objectRef = useRef();
 
   const orbitRadius = 10;
-  const speed = 0.5;
+  const speed = 0.2;
   const earthPosition = [0, 0, 0];
 
   useFrame(({ clock }) => {
@@ -28,7 +28,7 @@ export default function Moon(props) {
     >
       <mesh {...props}
         castShadow
-        scale={[.1, .1, .1]}
+        scale={[.08, .08, .08]}
       >
         <sphereGeometry args={[5, 20, 100]} />
         <meshStandardMaterial

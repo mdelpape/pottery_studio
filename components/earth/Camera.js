@@ -32,10 +32,10 @@ export default function Camera() {
         ref={ref}
         makeDefault
         position={[0, 0, 0]}
-        fov={120}
+        fov={100}
         aspect={window.innerWidth / window.innerHeight}
         near={0.1}
-        far={1000}
+        far={100}
         focus={.001}
       />
       <pointLight
