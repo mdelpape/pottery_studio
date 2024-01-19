@@ -18,16 +18,16 @@ export default function Scene() {
         }}
         shadows
       >
-        {/* <ParticlePlane count={10000} /> */}
-        {/* <Stars
+        <ParticlePlane />
+        <Stars
           radius={20}
           depth={5}
           count={50000}
-          factor={1.5}
+          factor={.5}
           saturation={0}
           fade={false}
           speed={0}
-        /> */}
+        />
         <ambientLight intensity={10} />
         <OrbitControls />
       </Canvas>
