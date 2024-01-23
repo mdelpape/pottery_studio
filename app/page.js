@@ -9,7 +9,7 @@ export default function Home() {
 
   useEffect(() => {
     // Redirect to '/path-to-redirect' when the component renders
-    redirect('/raining_pottery');
+    redirect('/earth');
   }, []);
 
   return (

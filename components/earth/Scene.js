@@ -27,7 +27,7 @@ export default function Scene() {
           radius={20}
           depth={5}
           count={40000}
-          factor={0.5}
+          factor={.9}
           saturation={0}
           fade={false}
           speed={0}
