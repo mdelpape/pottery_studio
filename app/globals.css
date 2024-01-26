@@ -16,6 +16,10 @@
   }
 }
 
-/* body {
-  cursor: url('../public/assets/brush.cur'), default
-} */
+body {
+  cursor: url('../public/assets/ellipse.png'), default
+}
+
+button:hover {
+  cursor: url('../public/assets/ellipse_hover.png'), default
+}
