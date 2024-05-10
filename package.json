@@ -15,6 +15,7 @@
     "drei": "^1.0.0",
     "gl-noise": "^1.6.1",
     "next": "^14.0.1",
+    "next-pwa": "^5.6.0",
     "react": "^18",
     "react-dom": "^18",
     "react-router-dom": "^6.21.2",
