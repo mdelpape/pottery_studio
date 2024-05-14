@@ -41,6 +41,7 @@ export default function House() {
       <ambientLight intensity={1} />
       <pointLight position={[200, 100, 500]} intensity={100}
         decay={.5} distance={1000}
+        color='{#CC0047'
       />
       <OrbitControls />
       <Stars
