@@ -11,10 +11,13 @@ import Vase5 from '@/components/3d/Vase5.js';
 export default function SideBar() {
 
   return (
-    <div className="absolute  m-5 flex flex-col p-5 gap-5 items-center z-50">
+    <div className="absolute  m-5 flex flex-col gap-5 items-center z-50">
       {/* <Link href="/raining_pottery">
         <ProjectCard Element={'Raining Pots'} />
       </Link> */}
+      <Link href="/house">
+        <ProjectCard Element={'Minecraft House'} />
+      </Link>
       <Link href="/flow_field_animation">
         <ProjectCard Element={'Flow Field'} />
       </Link>
