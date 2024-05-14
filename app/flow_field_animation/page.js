@@ -57,24 +57,6 @@ const FlowFieldAnimation = () => {
       ctx.current.fillStyle = 'rgba(0, 0, 0, .01)';
       ctx.current.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Draw lines to visualize flow field vectors
-      // ctx.current.strokeStyle = 'rgba(255, 255, 255, 0.2)';
-      // ctx.current.lineWidth = 1;
-
-
-      // flowField.current.forEach((vector) => {
-      //   const start_x = vector.x * gridSize + gridSize / 2;
-      //   const start_y = vector.y * gridSize + gridSize / 2;
-      //   const end_x = start_x + Math.cos(vector.angle) * gridSize / 2;
-      //   const end_y = start_y + Math.sin(vector.angle) * gridSize / 2;
-
-      //   ctx.current.beginPath();
-      //   ctx.current.moveTo(start_x, start_y);
-      //   ctx.current.lineTo(end_x, end_y);
-      //   ctx.current.stroke();
-      // });
-
-
       particles.current.forEach((particle) => {
         const gridX = Math.floor(Math.min(particle.x, canvas.width - 1) / gridSize);
         const gridY = Math.floor(Math.min(particle.y, canvas.height - 1) / gridSize);

@@ -1,4 +1,3 @@
-import Experience from 'components/cityHead/Experience';
 import Scene from '@/components/pointCloud/Scene.js'
 
 export default function PointCloud() {

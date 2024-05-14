@@ -4,9 +4,8 @@ import Scene from '../../components/earth/Scene'
 export default function Earth() {
   const bodyStyle = {
     overflow: 'hidden',
-    margin: 0,  // Remove default body margin
-    padding: 0, // Remove default body padding
-    // borderWidth: 10, // Remove default body border
+    margin: 0,
+    padding: 0,
   };
   return (
     <main className="flex flex-col items-center justify-between  bg-black z-10" style={bodyStyle}>
