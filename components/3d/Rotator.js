@@ -7,30 +7,57 @@ const Rotator = ({ children }) => {
   const [position, setPosition] = useState([0, 0, 0]);
   const [rotation, setRotation] = useState([0, 0, 0]);
 
+  const rotationSpeed = 0.005;
+  const linearSpeed = 0.005;
+  const minimumY = -34;
+  const maximumY = 10;
+  const minimumX = -15;
+  const maximumX = 10;
+  const minimumZ = -5;
+  const maximumZ = 2;
+
   useEffect(() => {
+    //Initial the position of the group in a random position within the specified range
     setPosition([
-      (Math.random() * 25) - 15,
-      Math.random() * 44 - 34,
-      Math.random() * 7 - 5,
+      Math.random() * (maximumX - minimumX) + minimumX,
+      Math.random() * (maximumY - minimumY) + minimumY,
+      Math.random() * (maximumZ - minimumZ) + minimumZ
     ]);
-    setRotation([0, 0, 0]);
   }
     , []);
 
+  // Update the position and rotation of the group
   useFrame(() => {
+
     if (groupRef.current) {
+
       // Rotate in random direction
-      groupRef.current.rotation.y += 0.005;
-      if (groupRef.current.position.y > -34) {
-        groupRef.current.position.y -= 0.005
+      groupRef.current.rotation.y += rotationSpeed;
+
+      if (groupRef.current.position.y > minimumY) {
+
+        // move down if not at the minimum
+        groupRef.current.position.y -= linearSpeed;
+
       } else {
-        groupRef.current.position.y = 10;
+
+        // reset to maximum if at the minimum
+        groupRef.current.position.y = maximumY;
+
       }
     }
   });
 
   // Wrap children with a group and apply the ref to the group
-  return <group ref={groupRef} position={position} rotation={rotation}>{children}</group>;
+  return
+  (
+    <group
+      ref={groupRef}
+      position={position}
+      rotation={rotation}>
+      {children}
+    </group>
+  )
 };
 
 export default Rotator;

@@ -35,11 +35,13 @@ export default function House() {
       shadows
     >
       <pointLight position={[0, -.5, .5]}
-        intensity={1}
+        intensity={7}
       />
       <HouseModel />
       <ambientLight intensity={1} />
-      <pointLight position={[10, 10, 10]} />
+      <pointLight position={[200, 100, 500]} intensity={100}
+        decay={.5} distance={1000}
+      />
       <OrbitControls />
       <Stars
         radius={20}
@@ -49,12 +51,6 @@ export default function House() {
         saturation={0}
         fade={false}
         speed={0}
-      />
-      <Cloud
-        position={[0, 3, 0]}
-        scale={[1, 1, 1]}
-        speed={0.1}
-        opacity={0.15}
       />
     </Canvas>
   )
