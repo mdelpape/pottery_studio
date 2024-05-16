@@ -16,6 +16,9 @@ export default function SideBar() {
         <ProjectCard Element={'Raining Pots'} />
       </Link> */}
       <Link href="/house">
+        <ProjectCard Element={'Chunk'} />
+      </Link>
+      <Link href="/house">
         <ProjectCard Element={'Minecraft House'} />
       </Link>
       <Link href="/flow_field_animation">
