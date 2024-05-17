@@ -15,6 +15,9 @@ export default function SideBar() {
       {/* <Link href="/raining_pottery">
         <ProjectCard Element={'Raining Pots'} />
       </Link> */}
+      <Link href="/upload">
+        <ProjectCard Element={'Upload'} />
+      </Link>
       <Link href="/chunk">
         <ProjectCard Element={'Chunk'} />
       </Link>
