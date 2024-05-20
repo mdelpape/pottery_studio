@@ -18,6 +18,15 @@ export default function Scene() {
         }}
         shadows
       >
+        <mesh position={[0, 0, 0]} castShadow receiveShadow>
+          <sphereGeometry
+            position={[0, 0, 0]}
+            args={[.5, 100, 100]}
+          />
+          <meshStandardMaterial
+            shininess={200}
+          />
+        </mesh>
         <ParticlePlane />
         <Stars
           radius={20}
