@@ -71,7 +71,7 @@ export default function UploadScene() {
         style={{ width: '210px', height: '30px' }}
         type="file"
         accept=".glb"
-        className="absolute bottom-5 right-3  bg-black text-white"
+        className="absolute bottom-10 right-5  bg-black text-white"
         onChange={handleFileUpload}
       />
     </>
