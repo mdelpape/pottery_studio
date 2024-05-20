@@ -27,7 +27,7 @@ export default function SideBar() {
       <Link href="/flow_field_animation">
         <ProjectCard Element={'Flow Field'} />
       </Link>
-      <Link href="/earth">
+      <Link href="/">
         <ProjectCard Element={'Earth'} />
       </Link>
       <Link href="/city_head">

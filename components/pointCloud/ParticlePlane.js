@@ -25,7 +25,7 @@ const ParticlePlane = ({ count = 1500, outerRadius = 5, innerRadius = 3 }) => {
     <mesh ref={mesh} position={[0, 0, 0]} rotation={[0, 0, 0]} castShadow receiveShadow>
       {particles.map((particle, index) => (
         <mesh key={index} position={particle.position} >
-          <sphereGeometry args={[0.01, 32, 32]} />
+          <sphereGeometry args={[0.005, 32, 32]} />
           <meshStandardMaterial attach="material" color="white" />
         </mesh>
       ))}

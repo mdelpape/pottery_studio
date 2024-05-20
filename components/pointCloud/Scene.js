@@ -24,11 +24,10 @@ export default function Scene() {
             args={[.5, 100, 100]}
           />
           <meshStandardMaterial
-            shininess={200}
           />
         </mesh>
         <ParticlePlane />
-        <Stars
+        {/* <Stars
           radius={20}
           depth={5}
           count={50000}
@@ -36,7 +35,7 @@ export default function Scene() {
           saturation={0}
           fade={false}
           speed={0}
-        />
+        /> */}
         <ambientLight intensity={10} />
         <OrbitControls />
       </Canvas>
