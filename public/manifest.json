@@ -1,9 +1,9 @@
 {
-    "theme_color": "#f69435",
+    "theme_color": "#242424",
     "background_color": "#f69435",
-    "display": "standalone",
+    "display": "fullscreen",
     "scope": "/",
-    "start_url": "/",
+    "start_url": "/earth",
     "name": "DeveloperMike",
     "short_name": "DevMike",
     "icons": [
