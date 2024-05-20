@@ -56,11 +56,6 @@ export default function UploadScene() {
           decay={1} distance={20}
           color='#CC0047'
         />
-        <Sphere args={[1, 16, 16]} position={[0, 7, 4]} receiveShadow castShadow={false}>
-          <meshStandardMaterial attach="material" color="white"
-            emissive="white" // Set emissive color to white for glowing effect
-          />
-        </Sphere>
         <OrbitControls />
         <Stars
           radius={20}
@@ -73,9 +68,10 @@ export default function UploadScene() {
         />
       </Canvas>
       <input
+        style={{ width: '210px', height: '30px' }}
         type="file"
         accept=".glb"
-        className="absolute top-0 right-0 m-5 p-2 bg-black text-white"
+        className="absolute bottom-5 right-3  bg-black text-white"
         onChange={handleFileUpload}
       />
     </>
