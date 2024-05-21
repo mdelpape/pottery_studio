@@ -31,7 +31,7 @@ export default function Scene() {
         <ParticlePlane />
 
         </group>
-        <pointLight position={[5, 10, 5]} intensity={200} />
+        <pointLight position={[5, 10, 5]} intensity={400} />
         <ambientLight intensity={0.05} />
         <OrbitControls />
       </Canvas>

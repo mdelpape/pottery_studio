@@ -1,35 +1,41 @@
 import { useFrame } from '@react-three/fiber';
-import React, { useRef } from 'react';
+import React, { useRef, useMemo } from 'react';
+import * as THREE from 'three';
 
-const ParticlePlane = ({ count = 1000, outerRadius = 4, innerRadius = 3 }) => {
-  const mesh = useRef();
+const ParticlePlane = ({ count = 10000, outerRadius = 4, innerRadius = 3 }) => {
+  const meshRef = useRef();
+  const dummy = useMemo(() => new THREE.Object3D(), []);
 
-  const speed = 0.0001;
-  const amplitude = 0.0;
-  // Generate random positions for particles within a circular area
-  const particles = [];
-  for (let i = 0; i < count; i++) {
-    const angle = Math.random() * Math.PI * 2;
-    const radius = Math.sqrt(Math.random()) * (outerRadius - innerRadius) + innerRadius;
-    const x = Math.cos(angle) * radius;
-    const z = Math.sin(angle) * radius;
-    particles.push({ position: [x, Math.random() * amplitude - .05, z] });
-  }
+  const particles = useMemo(() => {
+    const temp = [];
+    for (let i = 0; i < count; i++) {
+      const angle = Math.random() * Math.PI * 2;
+      const radius = Math.sqrt(Math.random()) * (outerRadius - innerRadius) + innerRadius;
+      const x = Math.cos(angle) * radius;
+      const z = Math.sin(angle) * radius;
+      temp.push({ position: [x, 0, z] });
+    }
+    return temp;
+  }, [count, outerRadius, innerRadius]);
 
-  // Animate the particles
   useFrame(() => {
-    mesh.current.rotation.y += speed;
+    meshRef.current.rotation.y += 0.0001;
+  });
+
+  useFrame(() => {
+    particles.forEach((particle, i) => {
+      dummy.position.set(...particle.position);
+      dummy.updateMatrix();
+      meshRef.current.setMatrixAt(i, dummy.matrix);
+    });
+    meshRef.current.instanceMatrix.needsUpdate = true;
   });
 
   return (
-    <mesh ref={mesh} position={[0, 0, 0]} rotation={[0, 0, 0]} castShadow receiveShadow>
-      {particles.map((particle, index) => (
-        <mesh key={index} position={particle.position} >
-          <sphereGeometry args={[0.005, 32, 32]} />
-          <meshStandardMaterial attach="material" color="white" />
-        </mesh>
-      ))}
-    </mesh>
+    <instancedMesh ref={meshRef} args={[null, null, count]} castShadow receiveShadow>
+      <sphereGeometry args={[0.005, 8, 8]} />
+      <meshStandardMaterial attach="material" color="white" />
+    </instancedMesh>
   );
 };
 
