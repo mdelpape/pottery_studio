@@ -1,11 +1,10 @@
-'use client'
-import { Canvas, useFrame } from '@react-three/fiber';
-import React, { useRef, useState, useEffect } from 'react';
+"use client";
+import { Canvas, useFrame } from "@react-three/fiber";
+import React, { useRef, useState, useEffect } from "react";
 import { OrbitControls, Stars, Clouds, Cloud } from "@react-three/drei";
-import ParticlePlane from '@/components/pointCloud/ParticlePlane.js';
+import ParticlePlane from "@/components/pointCloud/ParticlePlane.js";
 
 export default function Scene() {
-
   return (
     <>
       <Canvas
@@ -13,32 +12,29 @@ export default function Scene() {
         style={{
           position: "absolute",
           background: "black",
-          width: '100%',
-          height: '100%',
+          width: "100%",
+          height: "100%",
         }}
         shadows
       >
         <mesh position={[0, 0, 0]} castShadow receiveShadow>
-          <sphereGeometry
-            position={[0, 0, 0]}
-            args={[.5, 100, 100]}
-          />
-          <meshStandardMaterial
+          <sphereGeometry position={[0, 0, 0]} args={[1, 100, 100]} />
+          <meshPhongMaterial
+            color='#416CF5'
           />
         </mesh>
+        <group
+          position={[0, 0, 0]}
+          rotation={[0, 0, 0]}
+          scale={[1, 1, 1]}
+        >
         <ParticlePlane />
-        {/* <Stars
-          radius={20}
-          depth={5}
-          count={50000}
-          factor={.5}
-          saturation={0}
-          fade={false}
-          speed={0}
-        /> */}
-        <ambientLight intensity={10} />
+
+        </group>
+        <pointLight position={[5, 10, 5]} intensity={200} />
+        <ambientLight intensity={0.05} />
         <OrbitControls />
       </Canvas>
     </>
-  )
+  );
 }

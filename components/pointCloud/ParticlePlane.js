@@ -1,10 +1,10 @@
 import { useFrame } from '@react-three/fiber';
 import React, { useRef } from 'react';
 
-const ParticlePlane = ({ count = 1500, outerRadius = 5, innerRadius = 3 }) => {
+const ParticlePlane = ({ count = 1000, outerRadius = 4, innerRadius = 3 }) => {
   const mesh = useRef();
 
-  const speed = 0.00005;
+  const speed = 0.0001;
   const amplitude = 0.0;
   // Generate random positions for particles within a circular area
   const particles = [];
