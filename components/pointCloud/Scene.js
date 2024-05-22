@@ -38,22 +38,22 @@ export default function Scene() {
       let position, lookAt;
       switch (planet) {
         case "1":
-          position = [10, 10, 10];
+          position = [50, 10, 10];
           lookAt = [0, 0, 0];
           break;
         case "2":
           //mercury
-          position = [-8, 1, -35];
+          position = [-9.5, 0.5, -35];
           lookAt = [-10, 0, -36.65];
           break;
         case "3":
           //venus
-          position = [-7, 1, -69];
+          position = [-9, 1, -66];
           lookAt = [-10, 0, -71.28];
           break;
         case "4":
           //eath
-          position = [-7, 1, -95];
+          position = [-9, 1, -95];
           lookAt = [-10, 0, -99.5];
           break;
         case "5":
@@ -63,7 +63,7 @@ export default function Scene() {
           break;
         case "6":
           //jupitor
-          position = [-50, 1, -450];
+          position = [-50, 1, -490];
           lookAt = [-10, 0, -519.71];
           break;
         case "7":
@@ -82,7 +82,7 @@ export default function Scene() {
           lookAt = [-10, 0, -3009.83];
           break;
         default:
-          position = [10, 10, 10];
+          position = [50, 10, 10];
           lookAt = [0, 0, 0];
           break;
       }
@@ -134,13 +134,13 @@ export default function Scene() {
         <PerspectiveCamera
           ref={cameraRef}
           makeDefault
-          position={[10, 10, 10]}
+          position={[50, 10, 10]}
           fov={75}
           near={0.1}
           far={10000}
         />
         <mesh position={[0, 0, 0]} castShadow receiveShadow>
-          <sphereGeometry args={[5, 100, 100]} />
+          <sphereGeometry args={[20, 100, 100]} />
           <meshPhongMaterial color="#416CF5" emissive="#fff" />
         </mesh>
         <pointLight position={[0, 0, 0]} intensity={1} decay={0} />
@@ -205,7 +205,7 @@ export default function Scene() {
           <Neptune />
         </group>
         <LookAt cameraRef={cameraRef} ref={lookAtRef} />
-        <OrbitControls />
+        {/* <OrbitControls /> */}
       </Canvas>
       <div className="absolute top-2 right-2 z-50">
         <select
