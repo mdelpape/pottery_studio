@@ -4,6 +4,10 @@ import React, { useRef, useState, useEffect } from "react";
 import { PerspectiveCamera, OrbitControls, Stars } from "@react-three/drei";
 import ParticlePlane from "@/components/pointCloud/ParticlePlane.js";
 import gsap from "gsap";
+import { TextureLoader } from "three";
+import * as THREE from "three";
+import { useMemo } from "react";
+import { useLoader } from "@react-three/fiber";
 
 import Mercury from "@/components/pointCloud/Mercury.js";
 import Venus from "@/components/pointCloud/Venus.js";
@@ -24,10 +28,33 @@ const LookAt = React.forwardRef((props, ref) => {
   return <mesh ref={ref} position={[0, 0, 0]} visible={false} />;
 });
 
+const Sun = () => {
+  const sunTexture = useMemo(
+    () => new TextureLoader().load("/assets/sun_map.jpeg"),
+    []
+  );
+  return (
+    <mesh position={[0, 0, 0]}>
+      <sphereGeometry args={[20, 100, 100]} />
+      <meshStandardMaterial
+        map={sunTexture}
+        emissive="#ffffff"
+        emissiveMap={sunTexture}
+        emissiveIntensity={1.0}
+      />
+    </mesh>
+  );
+};
+
 export default function Scene() {
   const cameraRef = useRef();
   const lookAtRef = useRef();
   const [planet, setPlanet] = useState("");
+
+  const sunTexture = useMemo(
+    () => new TextureLoader().load("/assets/sun_map.jpeg"),
+    []
+  );
 
   const handlePlanetChange = (event) => {
     setPlanet(event.target.value);
@@ -139,12 +166,9 @@ export default function Scene() {
           near={0.1}
           far={10000}
         />
-        <mesh position={[0, 0, 0]} castShadow receiveShadow>
-          <sphereGeometry args={[20, 100, 100]} />
-          <meshPhongMaterial color="#416CF5" emissive="#fff" />
-        </mesh>
-        <pointLight position={[0, 0, 0]} intensity={1} decay={0} />
-        <ambientLight intensity={1} />
+        <Sun />
+        <pointLight position={[0, 0, 0]} intensity={5} decay={0} />
+        <ambientLight intensity={0.1} />
         <group
           position={[-10, 0, -36.65]}
           castShadow
