@@ -1,7 +1,7 @@
 "use client";
 import { Canvas, useFrame } from "@react-three/fiber";
 import React, { useRef, useState, useEffect } from "react";
-import { PerspectiveCamera, OrbitControls } from "@react-three/drei";
+import { PerspectiveCamera, OrbitControls, Stars } from "@react-three/drei";
 import ParticlePlane from "@/components/pointCloud/ParticlePlane.js";
 import gsap from "gsap";
 
@@ -123,11 +123,21 @@ export default function Scene() {
         }}
         shadows
       >
+        <Stars
+          radius={4000}
+          // depth={5}
+          count={40000}
+          factor={100}
+          fade={false}
+          speed={0}
+        />
         <PerspectiveCamera
           ref={cameraRef}
           makeDefault
           position={[10, 10, 10]}
           fov={75}
+          near={0.1}
+          far={10000}
         />
         <mesh position={[0, 0, 0]} castShadow receiveShadow>
           <sphereGeometry args={[5, 100, 100]} />
