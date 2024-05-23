@@ -17,6 +17,7 @@ import Jupiter from "@/components/pointCloud/Jupiter.js";
 import Neptune from "@/components/pointCloud/Neptune.js";
 import Saturn from "@/components/pointCloud/Saturn.js";
 import Uranus from "@/components/pointCloud/Uranus.js";
+import Sun from "@/components/pointCloud/Sun.js";
 
 const LookAt = React.forwardRef((props, ref) => {
   useFrame(() => {
@@ -27,24 +28,6 @@ const LookAt = React.forwardRef((props, ref) => {
 
   return <mesh ref={ref} position={[0, 0, 0]} visible={false} />;
 });
-
-const Sun = () => {
-  const sunTexture = useMemo(
-    () => new TextureLoader().load("/assets/sun_map.jpeg"),
-    []
-  );
-  return (
-    <mesh position={[0, 0, 0]}>
-      <sphereGeometry args={[20, 100, 100]} />
-      <meshStandardMaterial
-        map={sunTexture}
-        emissive="#ffffff"
-        emissiveMap={sunTexture}
-        emissiveIntensity={1.0}
-      />
-    </mesh>
-  );
-};
 
 export default function Scene() {
   const cameraRef = useRef();
