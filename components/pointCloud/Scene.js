@@ -34,11 +34,6 @@ export default function Scene() {
   const lookAtRef = useRef();
   const [planet, setPlanet] = useState("");
 
-  const sunTexture = useMemo(
-    () => new TextureLoader().load("/assets/sun_map.jpeg"),
-    []
-  );
-
   const handlePlanetChange = (event) => {
     setPlanet(event.target.value);
   };
