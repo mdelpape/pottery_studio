@@ -4,7 +4,7 @@ import Rotator from '@/components/3d/Rotator';
 import ProjectCard from '@/components/2d/ProjectCard.js';
 import { redirect } from 'next/navigation'
 
-import Scene from '@/components/earth/Scene'
+import Scene from '@/components/pointCloud/Scene.js'
 
 
 export default function Home() {
