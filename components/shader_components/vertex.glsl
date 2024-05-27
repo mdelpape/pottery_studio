@@ -101,7 +101,7 @@ float noise(vec3 P) {
 }
 
 float wave(vec3 position) {
-	return fit(smoothMod(position.y * 4.0, 1.0, 1.5), 0.35, 0.6, 0.0, 1.0);
+	return fit(smoothMod(position.y * 10.0, 1.0, 1.5), 0.35, 0.6, 0.0, 1.0);
 }
 
 void main() {
@@ -116,7 +116,7 @@ void main() {
 	vNormal = normal;
 	vUv = uv;
 
-	vec3 newPosition = position + vDisplacement * normal + uLoudness * normal * 2.0;
+	vec3 newPosition = position + vDisplacement * normal + uLoudness * normal * 3.0;
 
 	//MVP
 	vec4 modelViewPosition = modelViewMatrix * vec4(newPosition, 1.0);

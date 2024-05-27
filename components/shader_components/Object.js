@@ -84,6 +84,8 @@ export default function Object({ radius = 0.2, color = '#ff0000' }) {
         // wireframe
       />
       <sphereGeometry args={[2, 1000, 1000, 100]} />
+      {/* <torusGeometry args={[3, .5, 1000, 1000]} /> */}
+      {/* <planeGeometry args={[2, 2, 1000, 1000]} /> */}
     </mesh>
   );
 }
