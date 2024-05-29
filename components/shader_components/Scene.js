@@ -3,6 +3,13 @@ import { OrbitControls, shaderMaterial } from "@react-three/drei";
 import { useControls } from "leva";
 
 import Object from "./Object";
+import Mirror from "./Mirror";
+
+import { useEffect, useRef } from "react";
+import * as THREE from "three";
+import { useThree } from "@react-three/fiber";
+import { MeshReflectorMaterial } from "@react-three/drei";
+
 
 export default function Scene() {
   const { color } = useControls({
@@ -19,8 +26,12 @@ export default function Scene() {
         height: "100%",
       }}
     >
+
+      <Mirror />
+      <ambientLight intensity={0.5} />
+      <pointLight position={[10, 10, 10]} />
       <OrbitControls />
-      <Object  key={color} color={color}/>
+      <Object key={color} color={color} />
     </Canvas>
   );
 }

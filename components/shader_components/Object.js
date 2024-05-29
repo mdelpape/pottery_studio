@@ -60,13 +60,14 @@ export default function Object({ radius = 0.2, color = '#ff0000' }) {
   const texture = useLoader(TextureLoader, '/assets/image.jpg');
 
   useFrame(() => {
-    setTime((prevTime) => prevTime + 0.001);
+    setTime((prevTime) => prevTime + 0.005);
     if (shaderRef.current) {
       shaderRef.current.uniforms.uTime.value = time;
     }
   });
   return (
-    <mesh>
+    <mesh
+    >
       <shaderMaterial
         key={JSON.stringify(rgb) + time}
         ref={shaderRef}
