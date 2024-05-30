@@ -10,11 +10,13 @@ import * as THREE from "three";
 import { useThree } from "@react-three/fiber";
 import { MeshReflectorMaterial } from "@react-three/drei";
 
+import Controls from "./Controls";
 
 export default function Scene() {
   const { color } = useControls({
     color: { value: "#427278", label: "Color" },
   });
+
   return (
     <Canvas
       id="irid"
@@ -26,11 +28,9 @@ export default function Scene() {
         height: "100%",
       }}
     >
-
       <Mirror />
       <ambientLight intensity={0.5} />
-      <pointLight position={[10, 10, 10]} />
-      <OrbitControls />
+      <Controls />
       <Object key={color} color={color} />
     </Canvas>
   );
