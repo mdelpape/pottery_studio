@@ -1,4 +1,5 @@
 import { MeshReflectorMaterial } from '@react-three/drei'
+import waterdudv from '@/public/assets/waterdudv.jpg'
 
 export default function Mirror() {
 
@@ -10,15 +11,17 @@ export default function Mirror() {
         <planeGeometry args={[200, 200]} />
         <MeshReflectorMaterial
           mirror={1}
-          blur={[0, 0]}
+          blur={[300, 100]}
           resolution={2048}
           mixBlur={1}
-          roughness={0}
+          roughness={.5}
           depthScale={0}
           minDepthThreshold={.1}
           maxDepthThreshold={2}
           color="white"
-          metalness={0}
+          metalness={0.5}
+          distortionMap={waterdudv}
+          distortionScale={.5}
         />
       </mesh>
   )
