@@ -1,29 +1,42 @@
-import { MeshReflectorMaterial } from '@react-three/drei'
+import { MeshReflectorMaterial, useTexture, Reflector } from '@react-three/drei'
 import waterdudv from '@/public/assets/waterdudv.jpg'
+import cyberpunkDistortion from '@/public/assets/cyberpunkDistortion.png'
+import * as THREE from 'three'
 
-export default function Mirror() {
+function Ground(props) {
+  const [floor, normal] = useTexture(['/assets/cyberpunkDistortion.png', '/assets/SurfaceImperfections003_1K_Normal.jpg'])
+
+  // Set the wrap mode to RepeatWrapping
+  floor.wrapS = floor.wrapT = THREE.RepeatWrapping
+  normal.wrapS = normal.wrapT = THREE.RepeatWrapping
+
+  // Define the number of times the texture should repeat
+  const repeats = 10
+  floor.repeat.set(repeats, repeats)
+  normal.repeat.set(repeats, repeats)
 
   return (
-    <mesh
-        rotation={[-Math.PI / 2, 0, 0]}
-        position={[0, -3.5, 0]}
-      >
-        <planeGeometry args={[200, 200]} />
-        <MeshReflectorMaterial
-          mirror={1}
-          blur={[300, 100]}
-          resolution={2048}
-          mixBlur={1}
+    <Reflector resolution={1024} args={[200, 200]} {...props}>
+      {(Material, props) => (
+        <Material
           roughness={.5}
-          depthScale={0}
-          minDepthThreshold={.1}
-          maxDepthThreshold={2}
-          color="white"
+          color="#f0f0f0"
           metalness={0.5}
-          distortionMap={waterdudv}
-          distortionScale={.5}
+          roughnessMap={floor}
+          normalMap={normal}
+          normalScale={[10, 10]}
+          {...props}
         />
-      </mesh>
+      )}
+    </Reflector>
+  )
+}
+
+export default function Mirror() {
+  const [floor, normal] = useTexture(['/assets/SurfaceImperfections003_1K_var1.jpg', '/assets/SurfaceImperfections003_1K_Normal.jpg'])
+
+  return (
+        <Ground mirror={1} blur={[500, 100]} mixBlur={12} mixStrength={1.5} rotation={[-Math.PI / 2, 0, Math.PI / 2]} position-y={-3.5}/>
   )
 };
 
