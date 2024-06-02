@@ -13,7 +13,6 @@ export default function SideBar() {
     'planetary_system'
   );
   const [isOpen, setIsOpen] = useState(false);
-  console.log(pathname)
   //set the current location
 useEffect(() => {
   const path = pathname.split('/')[1];
@@ -42,6 +41,7 @@ useEffect(() => {
           <option value={'city_head'}>City Head</option>
           <option value={'point_cloud'}>Planetary System</option>
           <option value={'shader'}>Shader</option>
+          <option value={'racecar'}>Racecar</option>
         </select>
       </div>
   );
