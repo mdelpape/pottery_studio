@@ -4,8 +4,100 @@ import { useCamera, PerspectiveCamera, OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
 import RockBall from "./RockBall";
 import Car from "./Car";
+import { Physics, useBox, Debug, usePlane, useSphere, useCylinder, useHingeConstraint } from "@react-three/cannon";
+
+import Vehicle from "./Vehicle";
 
 const coronaSafetyDistance = 0.3;
+
+function PhysicsScene() {
+  return (
+    <Physics>
+      <Debug color="green" scale={1.1}>
+        <Vehicle />
+        <PlaneComponent />
+      </Debug>
+    </Physics>
+  );
+}
+
+function CarComponent() {
+  const [keys, setKeys] = useState({
+    w: false,
+    a: false,
+    s: false,
+    d: false,
+    shiftleft: false,
+  });
+
+
+
+  // Car body
+  const [bodyRef, bodyApi] = useBox(() => ({
+    mass: 1,
+    position: [0, 1, 0],
+    args: [2, 0.5, 1], // Width, height, depth of the car body
+  }));
+
+  // Wheel positions
+  const wheelPositions = [
+    [-1, 0.5, .5], // Front left
+    [1, 0.5, .5],  // Front right
+    [-1, 0.5, -.5], // Rear left
+    [1, 0.5, -.5], // Rear right
+  ];
+
+  // Wheels
+  const wheels = wheelPositions.map((position, index) => {
+    const [wheelRef, wheelApi] = useCylinder(() => ({
+      mass: 0.5,
+      position,
+      rotation: [Math.PI / 2, 0, 0],
+      args: [0.3, 0.3, .3, 32], // Radius top, radius bottom, height, segments
+    }));
+    return { wheelRef, wheelApi, position };
+  });
+
+  // Attach wheels to the car body using hinge constraints
+  wheels.forEach(({ wheelRef, wheelApi, position }) => {
+    useHingeConstraint(bodyRef, wheelRef, {
+      pivotA: [position[0], position[1] - 0.5, position[2]],
+      pivotB: [0, 0, 0],
+      axisA: [0, 0, 0],
+      axisB: [0, 0, 0],
+    });
+  });
+
+  return (
+    <>
+      <mesh ref={bodyRef}>
+        {/* <boxBufferGeometry args={[1, 0.5, 2]} />
+        <meshStandardMaterial color="blue" /> */}
+      </mesh>
+      {wheels.map(({ wheelRef }, index) => (
+        <mesh key={index} ref={wheelRef}>
+          {/* <cylinderBufferGeometry args={[0.3, 0.3, 0.1, 16]} />
+          <meshStandardMaterial color="black" /> */}
+        </mesh>
+      ))}
+    </>
+  );
+}
+
+function PlaneComponent() {
+  const [ref, api] = usePlane(() => ({
+    mass: 0,
+    position: [0, 0, 0],
+    rotation: [-Math.PI / 2, 0, 0],
+    scale: [1, 1, 1],
+  }));
+  return (
+    <mesh ref={ref} scale={[20, 20, 20]}>
+      <planeGeometry />
+      <meshBasicMaterial color={'#1F58AE'} />
+    </mesh>
+  );
+}
 
 function Scene() {
   const meshRef = useRef();
@@ -20,87 +112,8 @@ function Scene() {
   });
   const [velocity, setVelocity] = useState(0);
 
-  const handleKeyDown = useCallback(
-    (e) => {
-      const key = e.code.replace("Key", "").toLowerCase();
-      if (keys[key] !== undefined) {
-        setKeys((prevKeys) => ({ ...prevKeys, [key]: true }));
-      }
-    },
-    [keys]
-  );
-
-  const handleKeyUp = useCallback(
-    (e) => {
-      const key = e.code.replace("Key", "").toLowerCase();
-      if (keys[key] !== undefined) {
-        setKeys((prevKeys) => ({ ...prevKeys, [key]: false }));
-      }
-    },
-    [keys]
-  );
-
-  useEffect(() => {
-    window.addEventListener("keydown", handleKeyDown);
-    window.addEventListener("keyup", handleKeyUp);
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-      window.removeEventListener("keyup", handleKeyUp);
-    };
-  }, [handleKeyDown, handleKeyUp]);
-
-  useFrame(() => {
-    const mesh = meshRef.current;
-    const goal = goalRef.current;
-    let speed = 0;
-    const sprintMultiplier = keys.shiftleft ? 2 : 1;
-    if (keys.w) speed = 0.04 * sprintMultiplier;
-    else if (keys.s) speed = -0.04 * sprintMultiplier;
-
-    //lean the car if the a or d are pressed
-    let lean = 0;
-    if (keys.a) lean = 0.05;
-    else if (keys.d) lean = -0.05;
-
-    setVelocity((prevVelocity) => prevVelocity + (speed - prevVelocity) * 0.01);
-    mesh.translateZ(velocity);
-
-    if (keys.a) mesh.rotateY(0.02);
-    else if (keys.d) mesh.rotateY(-0.02);
-
-    const a = new THREE.Vector3().lerpVectors(
-      goal.position,
-      mesh.position,
-      0.4
-    );
-
-    const b = new THREE.Vector3().copy(goal.position);
-    const dir = new THREE.Vector3().subVectors(a, b).normalize();
-    const dis = a.distanceTo(b) - coronaSafetyDistance;
-    goal.position.addScaledVector(dir, dis);
-
-    // Calculate the offset based on the object's orientation
-    const offset = new THREE.Vector3(0, 1, -2);
-    offset.applyQuaternion(mesh.quaternion);
-
-    // Target position for the camera behind the object
-    const cameraTarget = new THREE.Vector3().copy(mesh.position).add(offset);
-
-    // Lerp the camera position towards the target position
-    camera.position.lerp(cameraTarget, 0.1);
-    camera.lookAt(mesh.position);
-  });
-
   return (
     <>
-      <Car
-        ref={meshRef}
-        position={[0, 1, 0]}
-        scale={[0.4, 0.4, 0.4]}
-        keys={keys}
-      />
-      <gridHelper args={[40, 40]} />
     </>
   );
 }
@@ -108,9 +121,11 @@ function Scene() {
 function App() {
   return (
     <Canvas style={{ height: "100vh", width: "100vw" }}>
+      <PhysicsScene />
       <ambientLight />
       <pointLight position={[10, 10, 10]} decay={0.5} intensity={10} />
       <Scene />
+      <OrbitControls />
     </Canvas>
   );
 }
