@@ -5,7 +5,8 @@ export default function Ramp() {
   const [ramp] = useBox(() => ({
     mass: 2,
     args: [2, 2, 2],
-    position: [10, 10, 0],
+    position: [0, 10, 10],
+    material: { friction: 0, restitution: 0.5 }
   }));
   return (
     <mesh ref={ramp}>
