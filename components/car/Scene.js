@@ -7,6 +7,7 @@ import Car from "./Car";
 import { Physics, useBox, Debug, usePlane, useSphere, useCylinder, useHingeConstraint } from "@react-three/cannon";
 
 import Vehicle from "./Vehicle";
+import Ramp from "./Ramp";
 
 const coronaSafetyDistance = 0.3;
 
@@ -16,6 +17,7 @@ function PhysicsScene() {
       <Debug color="green" scale={1.1}>
         <Vehicle />
         <PlaneComponent />
+        <Ramp />
       </Debug>
     </Physics>
   );
