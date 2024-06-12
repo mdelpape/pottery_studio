@@ -14,11 +14,18 @@ const coronaSafetyDistance = 0.3;
 function PhysicsScene() {
   return (
     <Physics>
-      <Debug color="green" scale={1.1}>
+      {/* <Debug color="green" scale={1.1} > */}
         <Vehicle />
-        <PlaneComponent />
+        <PlaneComponent color={'#1F58AE'} physicalRotation={[-Math.PI / 2, 0, 0]} />
+        <PlaneComponent color={'grey'} physicalRotation={[0, 0, 0]} physicalPosition={[0, 0, -50]}/>
+        <PlaneComponent color={'grey'} physicalRotation={[0, Math.PI, 0]} physicalPosition={[0, 0, 50]}/>
+        <PlaneComponent color={'white'} physicalRotation={[0, -Math.PI / 2, 0]} physicalPosition={[50, 0, 0]}/>
+        <PlaneComponent color={'white'} physicalRotation={[0, Math.PI / 2, 0]} physicalPosition={[-50, 0, 0]}/>
         <Ramp />
-      </Debug>
+        <Ramp />
+        <Ramp />
+        <Ramp />
+      {/* </Debug> */}
     </Physics>
   );
 }
@@ -26,20 +33,23 @@ function PhysicsScene() {
 function PlaneComponent(props) {
   const [ref, api] = usePlane(() => ({
     mass: 0,
-    position: [0, 0, 0],
-    rotation: [-Math.PI / 2, 0, 0],
+    position: props.physicalPosition,
+    rotation: props.physicalRotation,
+    material: {
+      friction: 0,
+      restitution: 0,
+    },
     scale: [1, 1, 1],
-
   }));
 
   // Number of instances
-  const numInstances = 1; // Adjust based on how many instances you need
+  const numInstances = 5; // Adjust based on how many instances you need
 
   return (
     <instancedMesh ref={ref} args={[null, null, numInstances]} {...props}>
       <planeGeometry args={[100, 100]} />
-      <meshBasicMaterial color={'#1F58AE'} />
-      <gridHelper />
+      <meshBasicMaterial color={props.color} />
+      {/* <gridHelper args={[100, 100]}/> */}
     </instancedMesh>
   );
 }
@@ -68,7 +78,7 @@ function App() {
     <Canvas style={{ height: "100vh", width: "100vw" }}>
       <PhysicsScene />
       <ambientLight />
-      <pointLight position={[10, 10, 10]} decay={0.5} intensity={10} />
+      <pointLight position={[0, 10, 0]} decay={0.5} intensity={10} />
       <Scene />
       {/* <OrbitControls /> */}
     </Canvas>

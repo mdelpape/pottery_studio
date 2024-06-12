@@ -56,7 +56,7 @@ const Vehicle = ({
     chassisConnectionPointLocal: [1, 0, 1],
     useCustomSlidingRotationalSpeed: true,
     customSlidingRotationalSpeed: -30,
-    frictionSlip: 2,
+    frictionSlip: 10,
   };
 
   const wheelInfo1 = {
@@ -148,7 +148,7 @@ const Vehicle = ({
       return;
     }
 
-    const lerpAmount = 0.05; // Adjust for smoothness (0 to 1)
+    const lerpAmount = 0.01; // Adjust for smoothness (0 to 1)
 
     // Calculate a dynamic offset based on vehicle orientation and user input (optional)
     const baseOffset = new THREE.Vector3(0, 5, -10); // Initial offset for view and distance
